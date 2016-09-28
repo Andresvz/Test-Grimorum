@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% block content %}
+<!-- Page Content -->
+<div class="container" ng-controller="ProductCtrl" ng-cloak>
+ <h2>Mi Carrito</h2>
+ <table class="table table-condensed" style="border-bottom: 1px solid #DDDDDD;">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Nombre</th>
+        <th>Cantidad</th>
+        <th>Costo Total</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="order in $parent.shopingCart">
+        <td style="width: 300px;">
+          <img src="/media/<%order.item.fields.image %> " alt="" style="width: 200px;height: 130px;">
+        </td>
+        <td> <%order.item.fields.name %></td>
+        <td> <%order.cantidad %></td>
+        <td> <%order.cantidad * order.item.fields.price | currency %></td>
+        <td>
+          <a href="javascript:void(0);" ng-click="max(order)" 
+           
+            class="btn btn-success btn-xs"> 
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </a>
+          <a href="javascript:void(0);" ng-show="order.cantidad>1" class="btn btn-warning btn-xs"ng-click=" minux(order)">
+            <i class="fa fa-minus" aria-hidden="true"></i>
+          </a>
+          <a href="javascript:void(0);" class="btn btn-danger btn-xs" ng-click="delete(order)">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h2 style=" display: inline-block;
+      margin: 0;">Total: <% Total() | currency%></h2>
+  <button type="button" class="btn btn-primary " style="float:right;" ng-click="comprar()">
+    <i class="fa fa-credit-card" aria-hidden="true"></i> Comprar</button>
+</div>
+{% endblock content %}
+
+{% block extrajs %}
+
+<script type="text/javascript">
+    var products = {{products_json| safe}};
+
+</script>
+
+{% endblock %}

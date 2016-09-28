@@ -1,0 +1,128 @@
+{% load staticfiles i18n %}<!DOCTYPE html>
+<html lang="en" ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}  Shop Grimorum  {% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
+
+    {% block css %}
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/heroic-features.css' %}">
+    <link rel="stylesheet" href="{% static 'css/angular-ui-notification.min.css' %}">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    {% endblock %}
+
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="ProductCtrl" ng-cloak>
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" >Grimorum Shop</a>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container -->
+    </nav>
+
+    <div class="container" ng-cloak>
+
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
+      {% endfor %}
+      {% endif %}
+
+      {% block content %}
+<div class="container">    
+  <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+    <div class="panel panel-primary" style="border-color: #222222; !important " >
+      <div class="panel-heading" style="     color: #fff;
+        background-color: #222222;
+        border-color: #222222;">
+        <div class="panel-title" align="center">Grimorum Shop</div>
+      </div>     
+
+      <div style="padding-top:30px" class="panel-body" >
+
+        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+        <form action="" method="POST">
+          {% csrf_token %}
+
+          <div style="margin-bottom: 25px" class="input-group">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username">                                        
+          </div>
+
+          <div style="margin-bottom: 25px" class="input-group">
+            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+            <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
+          </div>
+
+
+          <div style="margin-top:10px" class="form-group">
+            <!-- Button -->
+
+              <button class="btn btn-success" type="submit">Ingresar</button>
+          </div>
+
+
+          <div class="form-group">
+            <div class="col-md-12 control">
+              <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                No tienes cuenta ?
+                <a href="register/" >
+                 Registrate aqui ! 
+                </a>
+              </div>
+            </div>
+          </div>    
+        </form>     
+
+
+
+      </div>                     
+    </div>  
+  </div>
+
+
+  </div> 
+</div>
+
+{% endblock content %}
+{% block footer %}
+<!-- Footer -->
+<footer style="margin:0px; text-align:center;">
+  <div class="row">
+    <div class="col-lg-12">
+      <p>Copyright &copy; Test Grimorum 2016</p>
+    </div>
+  </div>
+</footer>
+{% endblock footer %}
+    </div> <!-- /container -->
+
+    {% block modal %}{% endblock modal %}
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="https://use.fontawesome.com/d17ba647fb.js"></script> 
+    {% block extrajs %}
+
+    {% endblock  %}
+  </body>
+</html>
