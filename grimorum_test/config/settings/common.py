@@ -26,7 +26,7 @@ DEBUG = True
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '8q_%)h8=$uho5-61eaoz2e*i#!b9a6f65s#zqy_+_635$ng&x!'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # APP CONFIGURATION
@@ -43,8 +43,8 @@ DJANGO_APPS = (
     'django.contrib.humanize',
 
     # Admin
-    # 'material',
-    'django_admin_bootstrapped',
+    #'material',
+    #'django_admin_bootstrapped',
     'django.contrib.admin',
 )
 
@@ -153,7 +153,7 @@ TEMPLATES = [
 # STATIC FILE CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-root
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, '../../../../grimorum_static')
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#static-url
 STATIC_URL = '/static/'
@@ -172,7 +172,7 @@ STATICFILES_FINDERS = (
 # MEDIA CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#media-root
-MEDIA_ROOT = os.path.join(os.path.dirname(__file__), '../../media')
+MEDIA_ROOT = os.path.join(os.path.dirname(__file__), '../../../../grimorum_media')
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = '/media/'
