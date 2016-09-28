@@ -194,8 +194,8 @@ $rootScope,Notification){
         localStorage.clear();
         Notification.info('Compra exitosa!');
         $timeout(function(){
-          window.location.href='/';
-        }, 3000);
+          window.location.href='/home';
+        }, 2000);
       } else {
         console.error(data); 
         Notification.error('Intenta nuevamente!');
